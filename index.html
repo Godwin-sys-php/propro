@@ -99,7 +99,7 @@
           window.alert("Veuillez remplir tous les champs");
         } else {
           await window
-            .fetch("http://localhost:3007/lolcat", {
+            .fetch("/lolcat", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
